@@ -1,6 +1,6 @@
 ## Itexpay WooCommerce Plugin
 
-- This Plugin is not just for web acquiring. You can access all our ITEX services in one click! Thanks to ITEX | WOOCOMMERCE
+- This Plugin is for web acquiring. You can access our ITEXPay services in one click! Thanks to ITEX | WOOCOMMERCE
 
 ## Installation and Usage
 

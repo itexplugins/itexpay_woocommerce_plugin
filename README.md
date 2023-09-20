@@ -1,8 +1,7 @@
 ## Itexpay WooCommerce Plugin
 
-- This Plugin is for web acquiring. You can access our ITEXPay services in one click! Thanks to ITEX | WOOCOMMERCE
 
-## Installation and Usage
+### Installation and Usage
 
 
 - ItexPay Plugin for WooCommerce is easy to use. Get started by installing this plugin in your WordPress Website.
@@ -27,4 +26,3 @@ as WooCommerce is installed on WordPress Platform. WordPress will automatically 
   
 Also Note: This plugin is build on WooCommerce. This means that for the plugin to function properly, WooCommerce must also be installed.
 
-### You have your ItexPay! You have payments in one click! You have more!

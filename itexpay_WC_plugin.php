@@ -281,7 +281,7 @@ function init_ItexPay_gateway_class() {
 
                         $order = wc_get_order($order_id);
 
-                        $new_status = 'wc-processing'; // Replace with the desired status.
+                        $new_status = 'wc-completed'; // Replace with the desired status.
                         $note = $paymentid;
 
                         $order->update_status($new_status, $note);

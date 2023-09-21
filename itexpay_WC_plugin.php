@@ -7,7 +7,7 @@
 /*
 Plugin Name: ItexPay WC_Plugin
 Plugin URI: http://wordpress.org/plugins/itexpay_plugin/
-Description: This Plugin is not just for web acquiring. You can now access all our Itex services in one click! Thanks to ITEX | WOOCOMMERCE
+Description: This ItexPay Plugin is used for web acquiring in WOOCOMMERCE.
 Author: ITEX Integrated Services
 Version: 1.0.0
 Author URI: https://iisysgroup.com
@@ -78,6 +78,7 @@ function init_ItexPay_gateway_class() {
 
 
                 // Actions hook.
+                add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
                 add_action('woocommerce_api_callback', array($this, 'check_response'));
 
             }
@@ -120,72 +121,72 @@ function init_ItexPay_gateway_class() {
                         'default' => '',
                         'desc_tip' => true,
                     ),
-                    'Test_Private_Key' => array(
-                        'title' => __('Test Private Key', 'woocommerce'),
-                        'type' => 'text',
-                        'css' => 'width:50em;',
-                        'description' => __('Enter your ItexPay Test Private Key', 'woocommerce'),
-                        'default' => '',
-                        'desc_tip' => true,
-                    ),
-                    'Test_Encryption_Key' => array(
-                        'title' => 'Test Encryption Key',
-                        'type' => 'text',
-                        'css' => 'width:50em;',
-                        'description' => 'Enter your Test encryption Key',
-                        'default' => '',
-                        'desc_tip' => true,
-                    ),
-
-                    'Live_Title' => array(
-                        'title' => __('Live Title', 'woocommerce'),
-                        'type' => 'safe_text',
-                        'description' => __('This controls the title which the user sees during live checkout.', 'woocommerce'),
-                        'default' => _x('ItexPay', 'Check payment method', 'woocommerce'),
-                        'desc_tip' => true,
-                    ),
-                    'Live_Description' => array(
-                        'title' => __('Live Description', 'woocommerce'),
-                        'type' => 'text',
-                        'css' => 'width:50em;',
-                        'description' => __('Payment method description that the customer will see on your live checkout.', 'woocommerce'),
-                        'default' => __('', 'woocommerce'),
-                        'desc_tip' => true,
-                    ),
-                    'Live_Public_Key' => array(
-                        'title' => 'Live Public Key',
-                        'type' => 'text',
-                        'css' => 'width:50em;',
-                        'description' => 'Enter your Live Public Key',
-                        'default' => '',
-                        'desc_tip' => true,
-                    ),
-                    'Live_Private_Key' => array(
-                        'title' => __('Live Private Key', 'woocommerce'),
-                        'type' => 'text',
-                        'css' => 'width:50em;',
-                        'description' => __('Enter your ItexPay Live Private Key', 'woocommerce'),
-                        'default' => '',
-                        'desc_tip' => true,
-                    ),
-                    'Live_Encryption_Key' => array(
-                        'title' => 'Live Encryption Key',
-                        'type' => 'text',
-                        'css' => 'width:50em;',
-                        'description' => 'Enter your Live encryption Key',
-                        'default' => '',
-                        'desc_tip' => true, 23
-                    ),
-
-                    'current_mode' => array(
-                        'css' => 'width:8em;',
-                        'title' => __('Current GateWay Mode', 'woocommerce'),
-                        'type' => 'select',
-                        'options' => array('Test Mode', 'Live Mode'),
-                        'description' => 'Select your gateway mode and save changes',
-                        'default' => 'Test Mode',
-                        'desc_tip' => true,
-                    ),
+//                    'Test_Private_Key' => array(
+//                        'title' => __('Test Private Key', 'woocommerce'),
+//                        'type' => 'text',
+//                        'css' => 'width:50em;',
+//                        'description' => __('Enter your ItexPay Test Private Key', 'woocommerce'),
+//                        'default' => '',
+//                        'desc_tip' => true,
+//                    ),
+//                    'Test_Encryption_Key' => array(
+//                        'title' => 'Test Encryption Key',
+//                        'type' => 'text',
+//                        'css' => 'width:50em;',
+//                        'description' => 'Enter your Test encryption Key',
+//                        'default' => '',
+//                        'desc_tip' => true,
+//                    ),
+//
+//                    'Live_Title' => array(
+//                        'title' => __('Live Title', 'woocommerce'),
+//                        'type' => 'safe_text',
+//                        'description' => __('This controls the title which the user sees during live checkout.', 'woocommerce'),
+//                        'default' => _x('ItexPay', 'Check payment method', 'woocommerce'),
+//                        'desc_tip' => true,
+//                    ),
+//                    'Live_Description' => array(
+//                        'title' => __('Live Description', 'woocommerce'),
+//                        'type' => 'text',
+//                        'css' => 'width:50em;',
+//                        'description' => __('Payment method description that the customer will see on your live checkout.', 'woocommerce'),
+//                        'default' => __('', 'woocommerce'),
+//                        'desc_tip' => true,
+//                    ),
+//                    'Live_Public_Key' => array(
+//                        'title' => 'Live Public Key',
+//                        'type' => 'text',
+//                        'css' => 'width:50em;',
+//                        'description' => 'Enter your Live Public Key',
+//                        'default' => '',
+//                        'desc_tip' => true,
+//                    ),
+//                    'Live_Private_Key' => array(
+//                        'title' => __('Live Private Key', 'woocommerce'),
+//                        'type' => 'text',
+//                        'css' => 'width:50em;',
+//                        'description' => __('Enter your ItexPay Live Private Key', 'woocommerce'),
+//                        'default' => '',
+//                        'desc_tip' => true,
+//                    ),
+//                    'Live_Encryption_Key' => array(
+//                        'title' => 'Live Encryption Key',
+//                        'type' => 'text',
+//                        'css' => 'width:50em;',
+//                        'description' => 'Enter your Live encryption Key',
+//                        'default' => '',
+//                        'desc_tip' => true, 23
+//                    ),
+//
+//                    'current_mode' => array(
+//                        'css' => 'width:8em;',
+//                        'title' => __('Current GateWay Mode', 'woocommerce'),
+//                        'type' => 'select',
+//                        'options' => array('Test Mode', 'Live Mode'),
+//                        'description' => 'Select your gateway mode and save changes',
+//                        'default' => 'Test Mode',
+//                        'desc_tip' => true,
+//                    ),
                 );
             }
 
